@@ -80,7 +80,7 @@ $images = glob($imageFolder . $imageExt, GLOB_BRACE);
                <?php foreach($images as $image) { ?>
                     <div class="col-3" width="50%">
                          <img src="<?= $image ?>" width="100" height="100" alt="<?= $image ?>" class="img-thumbnail">
-                         <p><?= $image ?></p>
+                         <p><?= basename($image) ?></p>
                          <form method='post' action=''>
                               <input type='hidden' name='fileDeleteName' value='<?= $image ?>'>
                               <input type='submit' name='deleteFile' value='supprimer'>
