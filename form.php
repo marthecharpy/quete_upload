@@ -60,35 +60,42 @@ $images = glob($imageFolder . $imageExt, GLOB_BRACE);
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Upload</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="styles.css" />
 </head>
 
 <body>
-     <div class="container">
-          <div class="row">
-               <h1>Upload</h1>
-               <?php foreach($failed as $errors) { ?>
+     <header class="header py-3">
+          <h1 class="h1 my-0">Upload</h1>
+     </header>
+     <main class="container py-3 clearfix">
+          <?php foreach($failed as $errors) { ?>
                <?php foreach($errors as $error) { ?>
                     <p><?= $error ?></p>
                <?php } ?>
-               <?php } ?>
-               <form class="col-12" action="" method="post" enctype="multipart/form-data">
-                    <input type="hidden" name="MAX_FILE_SIZE" value="<?= $maxSize ?>"/>
-                    <input type="file" name="files[]" multiple="multiple"/>
-                    <input type="submit" value="Send" />
+          <?php } ?>
+          <aside class="float-right">
+               <form class="form-inline" action="" method="post" enctype="multipart/form-data">
+                    <input class="sr-only" name="MAX_FILE_SIZE" value="<?= $maxSize ?>"/>
+                    <input type="file" class="form-control mr-2" name="files[]" multiple="multiple"/>
+                    <button type="submit" class="btn btn-primary">Enregistrer</button>
                </form>
-
+          </aside>
+          <h2 class="h2 mb-3">les images enregistrées</h2>
+          <div class="card-columns">
                <?php foreach($images as $image) { ?>
-                    <div class="col-3" width="50%">
-                         <img src="<?= $image ?>" width="100" height="100" alt="<?= $image ?>" class="img-thumbnail">
-                         <p><?= basename($image) ?></p>
-                         <form method='post' action=''>
-                              <input type='hidden' name='fileDeleteName' value='<?= $image ?>'>
-                              <input type='submit' name='deleteFile' value='supprimer'>
+                    <article class="card text-center mb-3">
+                         <img src="<?= $image ?>" alt="<?= $image ?>" class="card-img-top rounded">
+                         <div class="card-body">
+                              <h5 class="card-title"><?= basename($image) ?></h5>
+                         </div>
+                         <form class="card-footer" method='post' action=''>
+                              <input type='hidden' class="form-control" name='fileDeleteName' value='<?= $image ?>'>
+                              <input type='submit' class="btn btn-danger form-control" name='deleteFile' value='supprimer'>
                          </form>
-                    </div>
+                    </article>
                <?php } ?>
           </div>
-     </div>
+     </main>
      <!-- Latest compiled and minified Bootstrap JavaScript + JQuery -->
      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

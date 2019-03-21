@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+body{
+    width:100%;
+    height: 100%;
+}
+
+main{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+
+.h1, .p, .h2, .h5, .form-control-file, .btn{
+    font-family: 'Poppins', sans-serif;
+}
+
+.h2{
+    margin-bottom: 1rem;
+}
+
+.header{
+    background-color:#ff6f61;
+    text-align: center;
+    height: 20%;
+}
+
+.section {
+    margin-top: 5%;
+}
+
+.card-footer{
+    background-color: white;
+    border: none;
+    margin-top: -20px;
+}
+
+.card {
+    border: none;
+}
